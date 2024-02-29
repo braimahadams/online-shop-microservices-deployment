@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: {{ .Values.appName }}
 spec:
-  replicas: {{ .Values.appReplicas }}
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
       app: {{ .Values.appName }}
@@ -16,10 +16,12 @@ spec:
       - name: {{ .Values.appName }}
         image: "{{ .Values.appImage }}:{{ .Values.appVersion }}"
         ports:
-        - containerPort: {{ .Values.containerPort }}
+        - containerPort: {{ .Values.containerPort}}
         volumeMounts:
         - name: {{ .Values.volumeName }}
           mountPath: {{ .Values.containerMountPath }}
-      volumes: 
+      volumes:
       - name: {{ .Values.volumeName }}
-        emptyDir: {} 
+        emptyDir: {}
+
+        
