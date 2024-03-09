@@ -1,3 +1,4 @@
+namespace: microservice-ns
 releases:
   - name: rediscart
     chart: charts/redis
